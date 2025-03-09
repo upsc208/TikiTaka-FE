@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 스크롤바 넓이 지정 */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* 스크롤바 트랙 꾸미기 */
+::-webkit-scrollbar-track {
+  z-index: 100;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+/* 스크롤바 손잡이 꾸미기 */
+::-webkit-scrollbar-thumb {
+  background: #c7c7cc;
+  border-radius: 5px;
+  height: 20%;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@font-face {
+  font-family: 'LineSeedKr';
+  src: url('/public/fonts/LINESeedKR-Rg.woff2') format('woff2'); /* Regular 폰트 파일 경로 */
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LineSeedKr';
+  src: url('/public/fonts/LINESeedKR-Bd.woff2') format('woff2'); /* Bold 폰트 파일 경로 */
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LineSeedKr';
+  src: url('/public/fonts/LINESeedKR-Th.woff2') format('woff2'); /* Thin 폰트 파일 경로 */
+  font-weight: 100; /* Thin */
+  font-style: normal;
+}
+
+body {
+  font-family:
+    'LineSeedKr',
+    -apple-system,
+    Roboto,
+    BlinkMacSystemFont,
+    system-ui,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+}
+
+/* input 태그의 outline 제거 */
+input,
+textarea {
+  outline: none;
+}
+
+@layer utilities {
+  /* 글로벌 클래스 */
+  /* 최상위 컨테이너 */
+  .top-container {
+    @apply w-full flex min-h-screen justify-center min-w-[1000px];
+  }
+  /* max-width 1200px인 컨테이너 */
+  .max-w-1200 {
+    @apply w-full max-w-[1200px] px-6;
+  }
+  /* max-width 1000px인 컨테이너 */
+  .max-w-1000 {
+    @apply w-full max-w-[1000px] px-12;
+  }
+
+  /* 사이드바 메뉴 item*/
+  .side-menu {
+    @apply flex w-full h-12 items-center justify-between p-2 whitespace-nowrap;
+  }
+
+  /* hover */
+  .gray-hover {
+    @apply hover:bg-gray-1 hover:border-gray-2 hover:shadow-sm;
+  }
+
+  /* 메인 버튼 */
+  .btn {
+    @apply items-center bg-main text-body-bold text-white rounded px-10 py-1 hover:bg-gray-15 whitespace-nowrap;
+  }
+  /* 사이드바 활성화 */
+  .active-menu {
+    @apply bg-gray-1 border-gray-2 shadow-sm;
+  }
+
+  /* 모달 버튼 */
+  .modal-btn {
+    @apply flex justify-center items-center px-4 py-3 text-xs font-bold text-white hover:bg-gray-15 whitespace-nowrap;
+  }
+  /* 취소 버튼 */
+  .btn-back {
+    @apply modal-btn bg-gray-6 rounded;
+  }
+  /* 확인 버튼 */
+  .btn-check {
+    @apply modal-btn bg-main rounded;
+  }
+
+  /* 1px 가로줄 */
+  .division {
+    @apply w-full h-[1px] bg-border-1 shrink-0;
+  }
+  /* 남색 버튼 sm*/
+  .main-btn {
+    @apply bg-main hover:bg-gray-15 text-body-regular text-white py-1 px-3 rounded;
+  }
+
+  /* 남색 버튼 lg*/
+  .main-btn-lg {
+    @apply bg-main hover:bg-gray-15 text-subtitle text-white py-3 px-3 rounded;
+  }
+
+  /* 팝업 시 오버레이 */
+  .overlay {
+    @apply flex items-center justify-center fixed w-screen h-screen bg-gray-8 bg-opacity-40 left-0 top-0 z-50;
+  }
+
+  /* 티켓 미리보기 */
+  .preview {
+    @apply flex flex-col w-full p-5 gap-2 bg-white border border-gray-2 rounded-lg whitespace-nowrap;
+  }
+
+  /* 티켓 생성 선택지 */
+  .selection {
+    @apply flex items-center gap-9 w-[340px];
+  }
+
+  .selection-2 {
+    @apply flex items-center gap-9 w-[280px];
+  }
+
+  /* 티켓 생성 선택지 text */
+  .selection-text {
+    @apply text-body-regular text-gray-6;
+  }
+
+  /* 티켓 생성 선택지 드롭다운 버튼 */
+  .dropBtn {
+    @apply flex h-6 items-center justify-between border border-gray-6 rounded pl-4 pr-2 py-1;
+  }
+
+  /* 댓글 작성, 수정 input 스타일 */
+  .comment-textarea {
+    @apply w-full h-[78px] text-subtitle-regular border border-gray-2 rounded-[4px] py-3 px-4 resize-none focus:border-main;
+  }
+
+  /* 툴팁 */
+  .tooltip {
+    @apply bg-gray-1 border border-gray-2 rounded-full py-1 px-4 text-body-bold;
+  }
+
+  /* 내용 길면 ...  */
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3 {
+    @apply min-h-[2rem]; /* 제목에는 더 큰 최소 높이 적용 */
+  }
+
+  .prose h1 {
+    @apply text-4xl font-bold; /* h1 제목 크기 */
+  }
+  .prose h2 {
+    @apply text-3xl font-semibold; /* h2 제목 크기 */
+  }
+  .prose h3 {
+    @apply text-2xl font-medium; /* h3 제목 크기 */
+  }
+  .prose h4 {
+    @apply text-xl font-semibold;
+  }
+  .prose h5 {
+    @apply text-lg font-medium;
+  }
+  .prose h6 {
+    @apply text-base font-light;
+  }
+  .prose p {
+    @apply text-base; /* 일반 본문 텍스트 크기 */
+  }
+  .prose ul {
+    @apply list-disc pl-5 mb-4; /* 원형 리스트, 왼쪽 패딩, 마진 */
+  }
+  .prose li {
+    @apply mb-2; /* 리스트 항목 간 간격 */
+  }
+  .prose ol {
+    @apply m-0 break-words;
+  }
+  .prose hr {
+    @apply border-t-2 border-gray-300 my-8;
+  }
+  /* 텍스트 에디터 내 code 태그 css 오버라이딩 */
+  /* strong 태그 스타일 오버라이딩 */
+  .prose strong {
+    @apply font-bold;
+  }
+
+  .prose em {
+    @apply italic;
+  }
+
+  .prose u {
+    @apply underline;
+  }
+  .prose a {
+    @apply text-blue underline;
+  }
+
+  .prose a:hover {
+    @apply text-main;
+  }
+  .prose img {
+    @apply max-w-full h-auto;
+  }
+  .prose code::before,
+  .prose code::after {
+    @apply content-none;
+  }
+  .prose code {
+    @apply min-h-[1.2rem] bg-white rounded-[0.4rem] text-main text-[12px] font-normal px-[0.4rem] py-[0.2rem] whitespace-pre-wrap break-words;
+  }
+  /* code block css 오버라이딩 */
+  .prose pre {
+    @apply bg-main rounded text-white my-6 py-3 px-4 whitespace-pre-wrap break-words;
+  }
+
+  .prose pre code {
+    @apply bg-transparent text-inherit text-[0.8rem] p-0 whitespace-pre-wrap break-words;
+  }
+  .prose table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-gray-300 px-4 py-2;
+  }
+
+  .prose th {
+    @apply text-left font-semibold bg-gray-100;
+  }
+
+  .prose td {
+    @apply text-left;
+  }
+  .prose blockquote {
+    @apply border-l-4 pl-4 italic text-gray-600 my-4;
+    border-color: #4a90e2;
+  }
+
+  .prose * {
+    @apply min-h-[1rem];
+  }
+}
